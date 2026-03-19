@@ -1,0 +1,1270 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#E7E5DB" />
+  <title>Outcast Creative | A Escolha Óbvia para Gastronomia no Sul do Brasil</title>
+  <meta name="description" content="Não somos uma agência de posts. Somos operadores reais. Construímos Marcas-Destino para o setor gastronômico de Curitiba e Florianópolis." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Inter:wght@300;400;600;700;800&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --font-body: 'Inter', 'Helvetica Neue', sans-serif;
+      --font-heading: 'Fraunces', serif;
+
+      --primary: #004EAD;
+      --primary-hover: #00367a;
+      --ink: #634438;
+      --accent: #FFE075;
+      --bg: #E7E5DB;
+      --soft: #ffffff;
+
+      --stroke: rgba(99, 68, 56, 0.12);
+      --stroke-light: rgba(255, 255, 255, 0.15);
+
+      --radius: 16px;
+      --radius-lg: 32px;
+      --max: 1280px;
+      --nav-height: 100px;
+
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --safe-left: env(safe-area-inset-left, 0px);
+      --safe-right: env(safe-area-inset-right, 0px);
+
+      --pad-x: clamp(18px, 3.5vw, 5%);
+      --section-y: clamp(64px, 7vw, 120px);
+
+      --hero-gap: clamp(28px, 4vw, 60px);
+      --hero-pad-top: clamp(118px, 12vw, 160px);
+      --hero-pad-bottom: clamp(56px, 7vw, 90px);
+
+      /* FAQ */
+      --faq-bg: #f4f0e6;
+      --faq-border: #c8c3b6;
+      --faq-divider: #d6d2c7;
+      --faq-hover: #cde7ff;
+      --faq-plus: #1a66cc;
+    }
+
+    * { box-sizing: border-box; scroll-behavior: smooth; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 30px var(--pad-x);
+      position: relative;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    :focus-visible {
+      outline: 3px solid rgba(0, 78, 173, 0.45);
+      outline-offset: 3px;
+      border-radius: 10px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { scroll-behavior: auto !important; }
+      .reveal { transition: none !important; transform: none !important; opacity: 1 !important; }
+      .hero-badge { animation: none !important; }
+      .marquee-content { animation: none !important; }
+      .marquee-track { animation: none !important; overflow-x: auto; }
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 22px 34px; border-radius: 999px; font-family: var(--font-body);
+      font-weight: 800; font-size: 14px; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; border: 2px solid transparent;
+      min-height: 52px;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .btn.primary { background: var(--primary); color: #fff; box-shadow: 0 10px 30px rgba(0, 78, 173, 0.2); }
+    .btn.primary:hover { background: var(--primary-hover); transform: translateY(-4px); box-shadow: 0 15px 40px rgba(0, 78, 173, 0.35); }
+
+    .btn.outline { border-color: var(--ink); color: var(--ink); background: transparent; }
+    .btn.outline:hover { background: var(--ink); color: var(--bg); transform: translateY(-4px); }
+
+    .tag-pill {
+      font-weight: 800; text-transform: uppercase; font-size: 11px; letter-spacing: 2.5px;
+      display: inline-block; padding: 8px 20px; border-radius: 999px; margin-bottom: 24px;
+      background: rgba(0, 78, 173, 0.08); color: var(--primary); border: 1px solid rgba(0, 78, 173, 0.15);
+      white-space: nowrap;
+    }
+    .tag-pill.dark { background: rgba(255,224,117,0.1) !important; color: var(--accent) !important; border-color: rgba(255,224,117,0.2) !important; }
+
+    /* NAV */
+    nav {
+      height: var(--nav-height);
+      width: 100%;
+      display: flex; align-items: center;
+      position: fixed; top: 0; left: 0; z-index: 1000;
+      padding-top: var(--safe-top);
+      background: rgba(231, 229, 219, 0.85);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--stroke);
+      transition: all 0.4s ease;
+    }
+    nav.scrolled {
+      height: 80px;
+      box-shadow: 0 10px 40px rgba(99, 68, 56, 0.08);
+      background: rgba(231, 229, 219, 0.95);
+    }
+    .nav-inner { width: 100%; display: flex; justify-content: space-between; align-items: center; }
+    .logo-img { height: 68px; object-fit: contain; transition: height 0.4s ease; transform-origin: left center; }
+    nav.scrolled .logo-img { height: 50px; }
+
+    .nav-actions { display: flex; align-items: center; gap: 32px; }
+    .nav-link {
+      font-weight: 700; color: var(--ink); text-decoration: none; font-size: 14px;
+      text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s;
+    }
+    .nav-link:hover { color: var(--primary); }
+
+    .nav-toggle {
+      display: none;
+      width: 46px; height: 46px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(10px);
+      align-items: center; justify-content: center;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .nav-toggle span {
+      width: 18px; height: 2px; background: var(--ink);
+      display: block; border-radius: 2px; position: relative;
+    }
+    .nav-toggle span::before, .nav-toggle span::after {
+      content: ""; position: absolute; left: 0;
+      width: 18px; height: 2px; background: var(--ink); border-radius: 2px;
+    }
+    .nav-toggle span::before { top: -6px; }
+    .nav-toggle span::after { top: 6px; }
+
+    .mobile-drawer {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.35);
+      opacity: 0; pointer-events: none;
+      transition: opacity .25s ease;
+      z-index: 1100;
+    }
+    .mobile-drawer.active { opacity: 1; pointer-events: auto; }
+    .mobile-panel {
+      position: absolute; top: 0; right: 0;
+      height: 100%;
+      width: min(92vw, 420px);
+      background: rgba(231, 229, 219, 0.96);
+      backdrop-filter: blur(18px);
+      border-left: 1px solid var(--stroke);
+      padding: calc(18px + var(--safe-top)) 18px calc(18px + var(--safe-bottom)) 18px;
+      transform: translateX(12px);
+      transition: transform .25s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .mobile-drawer.active .mobile-panel { transform: translateX(0); }
+    .mobile-close {
+      align-self: flex-end;
+      width: 46px; height: 46px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,0.6);
+      cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 20px; font-weight: 700; color: var(--ink);
+      touch-action: manipulation;
+    }
+    .mobile-links a {
+      display: block;
+      padding: 14px 14px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--ink);
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,0.55);
+    }
+    .mobile-links a + a { margin-top: 10px; }
+    .mobile-links a:hover { border-color: rgba(0, 78, 173, 0.35); }
+
+    /* HERO */
+    .hero {
+      padding: calc(var(--hero-pad-top) + var(--safe-top)) 0 var(--hero-pad-bottom);
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: var(--hero-gap);
+      align-items: start;
+    }
+    .hero-content { padding-top: 8px; }
+
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(40px, 5.6vw, 78px);
+      line-height: 1.02;
+      font-weight: 400; 
+      letter-spacing: -0.02em;
+      margin-bottom: 22px;
+      color: var(--ink);
+      text-wrap: balance;
+    }
+    /* Classe de destaque com itálico */
+    .hero-highlight { color: var(--primary); font-style: italic; font-weight: 400; }
+
+    .hero p {
+      font-size: clamp(18px, 1.35vw, 20px);
+      opacity: 0.85;
+      margin-bottom: 40px;
+      font-weight: 400;
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    .hero-visual { position: relative; }
+    .hero-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: var(--radius);
+      box-shadow: 0 40px 80px rgba(99, 68, 56, 0.15);
+      transform: rotate(1.5deg);
+      transition: transform 0.6s ease;
+    }
+    .hero-visual:hover .hero-img { transform: rotate(0deg) scale(1.02); }
+
+    .hero-badge {
+      position: absolute;
+      bottom: -28px;
+      left: -28px;
+      background: var(--accent);
+      color: var(--ink);
+      width: 140px; height: 140px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      font-weight: 900; font-size: 12px;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      line-height: 1.2;
+      animation: spin 20s linear infinite;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      border: 2px solid var(--stroke);
+      z-index: 2;
+      user-select: none;
+    }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+
+    /* MARQUEE */
+    .marquee-wrapper {
+      background: var(--primary);
+      padding: 22px 0;
+      overflow: hidden;
+      display: flex;
+      white-space: nowrap;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+              mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+    }
+    .marquee-content {
+      display: inline-block;
+      animation: marquee 40s linear infinite;
+      font-weight: 800; font-size: 15px; letter-spacing: 2.5px; text-transform: uppercase; color: #ffffff;
+      will-change: transform;
+      padding-left: 10px;
+    }
+    .marquee-content span { margin: 0 40px; opacity: 0.55; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* SEÇÕES */
+    section { padding: var(--section-y) 0; }
+    .section-header { margin-bottom: 80px; max-width: 800px; }
+    .section-header.center {
+      text-align: center;
+      margin-left: auto; margin-right: auto;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .section-header h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(34px, 4.5vw, 58px);
+      font-weight: 400; 
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .section-header p {
+      font-size: clamp(18px, 1.4vw, 20px);
+      opacity: 0.8;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    /* SEÇÃO ESCURA GERAL */
+    .section-dark { background-color: var(--ink); color: var(--soft); }
+    .section-dark .section-header p { opacity: 0.8; }
+
+    .attack-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+    .attack-card {
+      background: rgba(255,255,255,0.04);
+      padding: 50px 40px;
+      border-radius: var(--radius);
+      border: 1px solid var(--stroke-light);
+      border-top: 4px solid var(--stroke-light);
+      transition: all 0.4s ease;
+      display: flex; flex-direction: column;
+      min-height: 100%;
+    }
+    .attack-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-8px); }
+    .attack-card h3 { font-family: var(--font-heading); font-weight: 400; font-size: 26px; margin-bottom: 16px; color: #fff; } 
+    .attack-card p { font-size: 16px; opacity: 0.7; line-height: 1.6; margin-bottom: 30px; flex-grow: 1; }
+    .verdict {
+      font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;
+      color: #ff6b6b;
+      display: flex; align-items: center; gap: 8px;
+      border-top: 1px solid var(--stroke-light);
+      padding-top: 24px;
+     margin-top: auto;
+    }
+
+    .attack-card.outcast-model {
+      background: var(--primary);
+      border-color: var(--primary);
+      border-top-color: var(--accent);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+      transform: scale(1.02);
+    }
+    .attack-card.outcast-model:hover { transform: scale(1.04) translateY(-8px); background: var(--primary-hover); }
+    .attack-card.outcast-model h3 { color: #fff; }
+    .attack-card.outcast-model p { opacity: 0.9; }
+    .attack-card.outcast-model .verdict { color: var(--accent); border-top-color: rgba(255,255,255,0.2); }
+
+    /* FOUNDERS */
+    .founders-block {
+      background: var(--soft);
+      border-radius: var(--radius-lg);
+      padding: 80px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 80px;
+      align-items: center;
+      border: 1px solid var(--stroke);
+      box-shadow: 0 40px 80px rgba(99, 68, 56, 0.05);
+    }
+    .founders-info h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 400; 
+      line-height: 1.1;
+      margin-bottom: 24px;
+      color: var(--ink);
+      text-wrap: balance;
+    }
+    .founders-info p {
+      font-size: clamp(16px, 1.2vw, 18px);
+      opacity: 0.85;
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+    .founders-profiles {
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 1px solid var(--stroke);
+      display: flex;
+      gap: 50px;
+      flex-wrap: wrap;
+    }
+    
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .profile-img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(0, 78, 173, 0.1);
+      box-shadow: 0 12px 24px rgba(99, 68, 56, 0.12);
+    }
+    .profile-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .profile strong { color: var(--primary); display: block; font-size: 20px; font-weight: 900; margin-bottom: 2px; }
+    .profile span { font-size: 13px; font-weight: 700; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; }
+
+    .founders-img {
+      width: 100%;
+      border-radius: var(--radius);
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      box-shadow: 0 20px 40px rgba(99, 68, 56, 0.15);
+    }
+
+    /* MÉTODO */
+    .method-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; }
+    .method-card {
+      background: var(--soft);
+      padding: 60px 48px;
+      border-radius: var(--radius);
+      border: 1px solid var(--stroke);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      }
+    .method-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(99, 68, 56, 0.08); border-color: var(--primary); }
+    .method-num {
+      font-family: var(--font-heading);
+      font-size: 80px;
+      color: var(--primary);
+      opacity: 0.08;
+      position: absolute;
+      top: 20px; right: 30px;
+      font-weight: 400; 
+      line-height: 1;
+    }
+    .method-card h3 {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      font-weight: 400; 
+      line-height: 1.2;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+    .method-card p {
+      opacity: 0.8;
+      line-height: 1.6;
+      font-size: 16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* SHOOTING PORTFOLIO MARQUEE AUTOMÁTICO */
+    .portfolio-marquee-wrap {
+      width: 100%;
+      overflow: hidden;
+      padding-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+    }
+
+    .portfolio-marquee-wrap::before,
+    .portfolio-marquee-wrap::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 8vw;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .portfolio-marquee-wrap::before {
+      left: 0;
+      background: linear-gradient(to right, var(--bg) 0%, transparent 100%);
+    }
+    .portfolio-marquee-wrap::after {
+      right: 0;
+      background: linear-gradient(to left, var(--bg) 0%, transparent 100%);
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      will-change: transform;
+    }
+    
+    .marquee-track.left { animation: scroll-left 50s linear infinite; }
+    .marquee-track.right { animation: scroll-right 50s linear infinite; }
+
+    .portfolio-marquee-wrap:hover .marquee-track {
+      animation-play-state: paused;
+    }
+
+    .portfolio-item {
+      width: clamp(160px, 15vw, 260px);
+      aspect-ratio: 4/5;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--stroke);
+      flex-shrink: 0;
+      box-shadow: 0 10px 30px rgba(99, 68, 56, 0.08);
+      transform: translateZ(0); 
+    }
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .portfolio-item:hover img {
+      transform: scale(1.08);
+    }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes scroll-right {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+
+    /* CASES */
+    .cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 60px; }
+    .case-card {
+      display: flex; flex-direction: column;
+      background: var(--soft);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--stroke);
+      transition: all 0.4s;
+    }
+    .case-media { width: 100%; aspect-ratio: 16/10; overflow: hidden; position: relative; background: #eee; }
+    .case-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
+    .case-card:hover .case-media img { transform: scale(1.05); }
+    .case-content { padding: 50px 40px; display: flex; flex-direction: column; flex-grow: 1; }
+    .case-content h3 { font-family: var(--font-heading); font-size: 30px; font-weight: 400; line-height: 1.1; margin-bottom: 16px; } 
+    .case-content p { font-size: 16px; opacity: 0.8; margin-bottom: 30px; line-height: 1.6; flex-grow: 1; }
+    .case-metric {
+      display: inline-block;
+      background: rgba(0, 78, 173, 0.06);
+      color: var(--primary);
+      padding: 16px 20px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 16px;
+      border-left: 4px solid var(--primary);
+    }
+
+    /* MODIFICAÇÕES DOS CASES NO TEMA ESCURO */
+    .section-dark .case-card {
+      background: rgba(255,255,255,0.04);
+      border-color: var(--stroke-light);
+      color: var(--soft);
+    }
+    .section-dark .case-card:hover {
+      background: rgba(255,255,255,0.08);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+      transform: translateY(-8px);
+    }
+    .section-dark .case-content h3 {
+      color: #fff;
+    }
+    .section-dark .case-metric {
+      background: rgba(255,224,117,0.1);
+      color: var(--accent);
+      border-left-color: var(--accent);
+    }
+
+    /* FAQ */
+    .faq-wrap { max-width: 1100px; margin: 0 auto; }
+    .faq-title { margin-bottom: 34px; }
+    .faq-title h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(34px, 4.5vw, 58px);
+      font-weight: 400; 
+      line-height: 1.1;
+      color: var(--ink);
+    }
+    .faq-list { border-top: 1px solid var(--faq-divider); }
+    .faq-item { border-bottom: 1px solid var(--faq-divider); padding: 48px 0; }
+    .faq-question {
+      width: auto;
+      background: var(--faq-bg);
+      border: 1px solid var(--faq-border);
+      padding: 14px 22px;
+      font-family: var(--font-heading);
+      font-weight: 400; 
+      font-size: 34px;
+      color: var(--ink);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      transition: background .25s ease, border-color .25s ease, transform .25s ease;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .faq-question:hover {
+      background: var(--faq-hover);
+      border-color: var(--faq-plus);
+      transform: translateY(-1px);
+    }
+    .faq-icon {
+      font-size: 34px;
+      line-height: 1;
+      color: var(--faq-plus);
+      font-weight: 700;
+      transform-origin: center;
+      transition: transform .25s ease;
+      flex: 0 0 auto;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .45s ease, opacity .35s ease, margin-top .35s ease;
+      opacity: 0;
+      margin-top: 0;
+      font-size: 18px;
+      color: rgba(99, 68, 56, 0.9);
+      line-height: 1.7;
+      max-width: 900px;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 360px;
+      opacity: 1;
+      margin-top: 18px;
+    }
+    .faq-item.active .faq-icon { transform: rotate(45deg); }
+
+    /* CTA + CALENDÁRIO */
+    .cta-area { background: var(--primary); padding: clamp(80px, 8vw, 140px) 0; text-align: center; color: #fff; }
+    .cta-area h2 { font-family: var(--font-heading); font-size: clamp(34px, 4.5vw, 60px); font-weight: 400; line-height: 1.1; margin-bottom: 24px; color: #fff; } 
+    .cta-area p { font-size: clamp(18px, 1.6vw, 20px); opacity: 0.92; max-width: 650px; margin: 0 auto 50px; font-weight: 300; line-height: 1.6; }
+    .calendar-container {
+      background: #fff;
+      border-radius: var(--radius);
+      height: 700px;
+      max-width: 960px;
+      margin: 0 auto;
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+
+    /* JOINCHAT */
+    .joinchat {
+      position: fixed;
+      bottom: calc(24px + var(--safe-bottom));
+      right: calc(24px + var(--safe-right));
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 16px;
+      padding-left: var(--safe-left);
+    }
+    .chat-bubble {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      color: var(--ink);
+      padding: 24px;
+      border-radius: 20px;
+      border-bottom-right-radius: 4px;
+      width: 300px;
+      box-shadow: 0 20px 50px rgba(99,68,56,0.15);
+      border: 1px solid var(--stroke);
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+      transform-origin: bottom right;
+    }
+    .joinchat:hover .chat-bubble { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+
+    .chat-header { display: flex; gap: 12px; align-items: center; margin-bottom: 16px; border-bottom: 1px solid var(--stroke); padding-bottom: 16px; }
+    .chat-avatar { width: 44px; height: 44px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 18px; font-weight: 400; color: #fff; }
+    .chat-info h4 { font-size: 14px; font-weight: 800; margin-bottom: 2px; }
+    .chat-info span { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #25D366; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+    .chat-info span::before { content: ''; width: 6px; height: 6px; background: #25D366; border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.3); opacity: 1; } }
+    .chat-text { font-size: 14px; line-height: 1.5; font-weight: 500; opacity: 0.9; margin-bottom: 20px; }
+    .chat-link { display: block; background: #25D366; color: #fff; text-decoration: none; padding: 14px; border-radius: 8px; font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; text-align: center; transition: 0.3s; }
+    .chat-link:hover { background: #20b858; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); }
+
+    .chat-trigger {
+      width: 72px; height: 72px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
+      text-decoration: none;
+      position: relative;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .chat-trigger svg { width: 36px; height: 36px; fill: #fff; }
+    .chat-badge { position: absolute; top: -2px; right: -2px; background: #ff3b30; color: #fff; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 900; border: 3px solid var(--bg); }
+    .chat-trigger:hover { transform: scale(1.08) rotate(-8deg); }
+
+    /* FOOTER */
+    footer { padding: 60px 0 calc(50px + var(--safe-bottom)); border-top: 1px solid var(--stroke); background: var(--soft); }
+    .footer-grid { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 80px; flex-wrap: wrap; gap: 60px; }
+    .footer-logo img { height: 90px; margin-bottom: 24px; }
+    .footer-copy { font-size: 16px; opacity: 0.7; max-width: 360px; line-height: 1.6; }
+    .footer-nav { display: flex; gap: 80px; }
+    .footer-col h5 { font-family: var(--font-heading); font-size: 20px; margin-bottom: 24px; font-weight: 400; color: var(--ink); } 
+    .footer-col a { display: block; text-decoration: none; color: var(--ink); opacity: 0.7; margin-bottom: 14px; font-size: 15px; font-weight: 600; transition: 0.3s; }
+    .footer-col a:hover { opacity: 1; color: var(--primary); padding-left: 5px; }
+    .footer-bottom { display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; opacity: 0.5; text-transform: uppercase; letter-spacing: 1.5px; border-top: 1px solid var(--stroke); padding-top: 40px; gap: 18px; flex-wrap: wrap; }
+
+    /* RESPONSIVIDADE */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; gap: clamp(28px, 6vw, 60px); padding: calc(clamp(128px, 14vw, 170px) + var(--safe-top)) 0 clamp(56px, 7vw, 90px); }
+      .hero p { margin: 0 0 36px 0; max-width: 90%; }
+      .hero-actions { justify-content: flex-start; }
+      .hero-img { max-width: 720px; transform: none; }
+      .hero-visual { margin-top: 20px; }
+      .hero-visual:hover .hero-img { transform: none; }
+      .hero-badge { left: -16px; bottom: -16px; }
+      
+      section { padding: clamp(64px, 8vw, 120px) 0; }
+      .attack-grid { grid-template-columns: 1fr; }
+      .founders-block { grid-template-columns: 1fr; padding: 60px 40px; text-align: center; gap: 46px; }
+      .founders-profiles { justify-content: center; }
+      .method-grid, .cases-grid { grid-template-columns: 1fr; gap: 40px; }
+      
+      .footer-grid { flex-direction: column; text-align: center; }
+      .footer-logo img { margin: 0 auto 24px; }
+      .footer-nav { flex-wrap: wrap; justify-content: center; width: 100%; gap: 60px; }
+      .footer-copy { margin: 0 auto; }
+    }
+
+    @media (max-width: 768px) {
+      nav { height: 80px; }
+      nav.scrolled { height: 72px; }
+      .nav-actions { display: none; }
+      .nav-toggle { display: inline-flex; }
+      .logo-img { height: 50px; }
+      nav.scrolled .logo-img { height: 44px; }
+      
+      .wrap { padding: 26px var(--pad-x); }
+      .section-header { margin-bottom: 56px; }
+      .section-header h2 { font-size: clamp(32px, 8vw, 40px); }
+      
+      .hero { padding: calc(130px + var(--safe-top)) 0 56px; text-align: center; }
+      .hero-content {
+        margin: 0 auto;
+        max-width: 350px; 
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; 
+      }
+      .hero h1 { font-size: clamp(30px, 8.5vw, 36px); line-height: 1.15; margin-bottom: 16px; text-align: left; width: 100%; }
+      .hero p { font-size: 15.5px; line-height: 1.6; margin-bottom: 32px; text-align: left; width: 100%; }
+      .btn { width: 100%; padding: 18px 24px; font-size: 13px; min-height: 52px; text-align: center; }
+      .hero-actions { flex-direction: column; width: 100%; gap: 14px; }
+      
+      .hero-badge { width: 90px; height: 90px; font-size: 9px; top: -15px; left: -10px; bottom: auto; }
+      
+      .attack-card { padding: 48px 24px; }
+      .founders-block { padding: 56px 24px; border-radius: 20px; gap: 40px; }
+      .method-card { padding: 48px 24px; }
+      .case-content { padding: 36px 24px; }
+      
+      .faq-item { padding: 40px 0; }
+      .faq-question { font-size: 22px; padding: 12px 16px; width: 100%; }
+      .faq-icon { font-size: 26px; }
+      .faq-answer { font-size: 16px; }
+      
+      .cta-area { padding: 78px 0; }
+      .calendar-container { height: 750px; border-radius: 18px; }
+      
+      .footer-nav { flex-direction: column; gap: 40px; align-items: center; }
+      .footer-col { display: flex; flex-direction: column; align-items: center; text-align: center; }
+      .footer-col a:hover { padding-left: 0; color: var(--primary); }
+      .footer-bottom { flex-direction: column; gap: 18px; text-align: center; }
+      
+      .chat-bubble { display: none; }
+      .chat-trigger { width: 64px; height: 64px; }
+    }
+
+    @media (max-width: 420px) {
+      .faq-question { font-size: 20px; }
+    }
+
+    @media (max-width: 380px) {
+      .hero p { font-size: 15px; } 
+      .tag-pill { font-size: 10px; letter-spacing: 2px; padding: 7px 16px; }
+      .chat-trigger { width: 60px; height: 60px; }
+      .hero-badge { top: -10px; left: 0px; }
+    }
+
+    @media (min-width: 1400px) {
+      .hero p { max-width: 620px; }
+      .attack-grid { gap: 46px; }
+      .method-grid { gap: 56px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav id="navbar" aria-label="Navegação principal">
+    <div class="wrap nav-inner">
+      <img src="logo.png" alt="Outcast Creative Logo" class="logo-img" loading="eager" decoding="async">
+
+      <div class="nav-actions">
+        <a href="#metodo" class="nav-link">Método</a>
+        <a href="#portfolio" class="nav-link">Skin in the game</a>
+        <a href="#agendar" class="btn primary" style="padding: 12px 28px; font-size: 12px; box-shadow: none;">Diagnóstico de 15min</a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-controls="mobileDrawer" aria-expanded="false">
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="mobile-panel" role="dialog" aria-label="Menu">
+      <button class="mobile-close" id="navClose" aria-label="Fechar menu">×</button>
+      <div class="mobile-links">
+        <a href="#metodo">Método</a>
+        <a href="#portfolio">Skin in the game</a>
+        <a href="#concorrencia">Entender o Problema</a>
+        <a href="#agendar" class="btn primary" style="width:100%; margin-top: 10px;">Diagnóstico de 15min</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero wrap reveal">
+    <div class="hero-content">
+      <div class="tag-pill">Curitiba & Florianópolis</div>
+      <h1>
+        A sua marca é a<br>
+        <span class="hero-highlight">escolha óbvia</span> ou<br>
+        apenas mais uma?
+      </h1>
+      <p>Construímos marcas-destino para o setor gastronômico. Não somos uma agência de posts; aliamos estética de alto nível a uma estratégia de performance 100% focada no seu DRE.</p>
+      <div class="hero-actions">
+        <a href="#agendar" class="btn primary">Agendar Diagnóstico Gratuito</a>
+        <a href="#concorrencia" class="btn outline">Entender o Problema</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="hero-bg.jpg" alt="Estratégia Outcast" class="hero-img" loading="lazy" decoding="async">
+      <div class="hero-badge" aria-hidden="true">Skin in<br>The Game</div>
+    </div>
+  </section>
+
+  <div class="marquee-wrapper" aria-label="Destaques">
+    <div class="marquee-content" aria-hidden="true">
+      <span>Empatia Operacional</span> <span>•</span>
+      <span>Marca-Destino</span> <span>•</span>
+      <span>Fim do Horóscopo Corporativo</span> <span>•</span>
+      <span>Foco no DRE</span> <span>•</span>
+      <span>Empatia Operacional</span> <span>•</span>
+      <span>Marca-Destino</span> <span>•</span>
+      <span>Fim do Horóscopo Corporativo</span> <span>•</span>
+      <span>Foco no DRE</span>
+    </div>
+  </div>
+
+  <section class="section-dark" id="portfolio">
+    <div class="wrap reveal">
+      <div class="section-header center">
+        <div class="tag-pill dark" style="background: rgba(255,255,255,0.08); color: #fff; border:none;">Cases Reais</div>
+        <h2 style="color: #fff;">As marcas que construímos.</h2>
+        <p>Resultados gerados aplicando a nossa metodologia na íntegra, com o nosso próprio dinheiro e na nossa própria operação.</p>
+      </div>
+
+      <div class="cases-grid">
+        <div class="case-card">
+          <div class="case-media">
+            <img src="case-penelope.png" alt="Penélope Bar" loading="lazy" decoding="async">
+          </div>
+          <div class="case-content">
+            <span class="tag-pill dark" style="align-self: flex-start; margin-bottom: 24px;">Operação Própria</span>
+            <h3>Penélope Bar</h3>
+            <p>A prova viva do nosso método. Construímos uma marca do absoluto zero, focando 100% em comunidade e branding estético.</p>
+            <div class="case-metric">R$ 1 Milhão faturado em 12 meses (Orgânico)</div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-media">
+            <img src="case-franquia-pizza.jpg" alt="Franquia de Pizzarias" loading="lazy" decoding="async">
+          </div>
+          <div class="case-content">
+            <span class="tag-pill dark" style="align-self: flex-start; margin-bottom: 24px;">Performance & Delivery</span>
+            <h3>Franquia de Pizzarias</h3>
+            <p>Através de reestruturação de marca e tráfego fundo de funil, escalamos a operação para patamares históricos.</p>
+            <div class="case-metric">+ R$ 1 Milhão/mês de faturamento incremental</div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-media">
+            <img src="case-rede-franquias.jpg" alt="Grande Rede de Franquias" loading="lazy" decoding="async">
+          </div>
+          <div class="case-content">
+            <span class="tag-pill dark" style="align-self: flex-start; margin-bottom: 24px;">Campanha de Alto Impacto</span>
+            <h3>Grande Rede de Franquias</h3>
+            <p>Desenvolvemos estratégia de marketing de guerrilha focada em datas sazonais críticas para o setor alimentício.</p>
+            <div class="case-metric">Campeã absoluta de vendas no Brasil (2024)</div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-media">
+            <img src="case-straccia.png" alt="Straccia" loading="lazy" decoding="async">
+          </div>
+          <div class="case-content">
+            <span class="tag-pill dark" style="align-self: flex-start; margin-bottom: 24px;">Operação Própria</span>
+            <h3>Straccia & Carlo</h3>
+            <p>De um conceito bruto a uma verdadeira marca-destino cobiçada em Curitiba. Execução impecável da metodologia OUTfoundation.</p>
+            <div class="case-metric">Case de Consolidação e Engenharia de Cardápio</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal" id="shooting">
+    <div class="wrap" style="padding-bottom: 0;">
+      <div class="section-header center" style="margin-bottom: 40px;">
+        <div class="tag-pill">Nosso Olhar</div>
+        <h2>Shooting Portfólio.</h2>
+        <p>A estética que gera desejo visceral e corta o ruído da concorrência. Nenhuma destas fotos é de banco de imagem: tudo produzido na trincheira das operações que cuidamos.</p>
+      </div>
+    </div>
+    
+    <div class="portfolio-marquee-wrap">
+      <div class="marquee-track left" aria-label="Galeria de fotos de produtos">
+        <div class="portfolio-item"><img src="portfolio-1.jpg" loading="lazy" alt="Food Shooting"></div>
+        <div class="portfolio-item"><img src="portfolio-2.jpg" loading="lazy" alt="Food Shooting"></div>
+        <div class="portfolio-item"><img src="portfolio-3.jpg" loading="lazy" alt="Food Shooting"></div>
+        <div class="portfolio-item"><img src="portfolio-4.jpg" loading="lazy" alt="Food Shooting"></div>
+        <div class="portfolio-item"><img src="portfolio-5.jpg" loading="lazy" alt="Food Shooting"></div>
+        <div class="portfolio-item"><img src="portfolio-6.jpg" loading="lazy" alt="Food Shooting"></div>
+        <div class="portfolio-item"><img src="portfolio-7.jpg" loading="lazy" alt="Food Shooting"></div>
+        <div class="portfolio-item"><img src="portfolio-8.jpg" loading="lazy" alt="Food Shooting"></div>
+        <div class="portfolio-item"><img src="portfolio-9.jpg" loading="lazy" alt="Food Shooting"></div>
+        <div class="portfolio-item"><img src="portfolio-10.jpg" loading="lazy" alt="Food Shooting"></div>
+        <div class="portfolio-item"><img src="portfolio-11.jpg" loading="lazy" alt="Food Shooting"></div>
+        <div class="portfolio-item"><img src="portfolio-12.jpg" loading="lazy" alt="Food Shooting"></div>
+      </div>
+
+      <div class="marquee-track right" aria-label="Galeria de fotos de produtos">
+        <div class="portfolio-item"><img src="portfolio-13.jpg" loading="lazy" alt="Food Shooting"></div>
+        <div class="portfolio-item"><img src="portfolio-14.jpg" loading="lazy" alt="Food Shooting"></div>
+        <div class="portfolio-item"><img src="portfolio-15.png" loading="lazy" alt="Food Shooting"></div>
+        <div class="portfolio-item"><img src="portfolio-16.jpg" loading="lazy" alt="Food Shooting"></div>
+        <div class="portfolio-item"><img src="portfolio-17.jpg" loading="lazy" alt="Food Shooting"></div>
+        <div class="portfolio-item"><img src="portfolio-18.jpg" loading="lazy" alt="Food Shooting"></div>
+        <div class="portfolio-item"><img src="portfolio-19.jpg" loading="lazy" alt="Food Shooting"></div>
+        <div class="portfolio-item"><img src="portfolio-20.jpg" loading="lazy" alt="Food Shooting"></div>
+        <div class="portfolio-item"><img src="portfolio-21.jpg" loading="lazy" alt="Food Shooting"></div>
+        <div class="portfolio-item"><img src="portfolio-22.jpg" loading="lazy" alt="Food Shooting"></div>
+        <div class="portfolio-item"><img src="portfolio-23.jpg" loading="lazy" alt="Food Shooting"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark" id="concorrencia">
+    <div class="wrap reveal">
+      <div class="section-header center">
+        <div class="tag-pill dark" style="background: rgba(255,255,255,0.08); color: #fff; border:none;">A Realidade</div>
+        <h2 style="color: #fff;">Por que o seu salão não lota?</h2>
+        <p>O mercado amadureceu, mas a sua agência continuou no passado. Veja exatamente onde o seu dinheiro está vazando hoje.</p>
+      </div>
+
+      <div class="attack-grid">
+        <div class="attack-card">
+          <div class="tag-pill dark" style="background: rgba(255,255,255,0.1); color: #fff; border:none;">A Agência "Faria Lima"</div>
+          <h3>As Planilhas Teóricas</h3>
+          <p>Falam sobre Método 8Ps, OKRs e métricas corporativas. Entendem de Excel, mas fogem da operação diária.</p>
+          <div class="verdict">✕ Nunca viram um CMV estourar na prática</div>
+        </div>
+        <div class="attack-card">
+          <div class="tag-pill dark" style="background: rgba(255,255,255,0.1); color: #fff; border:none;">A Agência "Delivery"</div>
+          <h3>O Refém do iFood</h3>
+          <p>Focam 100% em otimizar seu iFood e aplicar cupons. Você entra numa guerra de preços sangrenta.</p>
+          <div class="verdict">✕ Não geram desejo real de visita</div>
+        </div>
+        <div class="attack-card outcast-model">
+          <div class="tag-pill" style="background: #fff; color: var(--primary); border:none;">A Trindade Outcast</div>
+          <h3>A Construção da Marca-Destino</h3>
+          <p>Não vendemos Horóscopo Corporativo. Unimos visual imersivo com máquina de aquisição focada no Fundo de Funil.</p>
+          <div class="verdict" style="color: var(--accent);">✓ O cliente escolhe você, não o preço</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap reveal" id="sobre">
+    <div class="founders-block">
+      <div class="founders-info">
+        <div class="tag-pill">Nossa Vantagem Desleal</div>
+        <h2>Nós operamos os nossos próprios restaurantes.</h2>
+        <p>A grande fraqueza das outras agências é que elas são teóricas. Elas olham de fora. A Outcast nasceu da frustração de quem vive a operação todos os dias.</p>
+        <p>O nosso maior diferencial é a <strong>Empatia Operacional</strong>. Nós sabemos exatamente a dor de um DRE no vermelho e de uma sexta-feira caótica na cozinha.</p>
+        <div class="founders-profiles">
+          <div class="profile">
+            <img src="foto-muri.jpg" alt="Muri" class="profile-img">
+            <div class="profile-text">
+              <strong>Muri</strong>
+              <span>CEO • Estratégia Business</span>
+            </div>
+          </div>
+          <div class="profile">
+            <img src="foto-nalu.png" alt="Nalu" class="profile-img">
+            <div class="profile-text">
+              <strong>Nalu</strong>
+              <span>COO • Branding com Alma</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <img src="foto-operacao.jpg" alt="Operação Real" class="founders-img" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap reveal" id="metodo">
+    <div class="section-header center">
+      <div class="tag-pill">A Trindade Outcast</div>
+      <h2>O método de Operador para Operador.</h2>
+      <p>Nossa metodologia nasceu na trincheira e não na teoria. É assim que transformamos negócios em destinos cobiçados.</p>
+    </div>
+
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="method-num">01</div>
+        <h3>OUTfoundation</h3>
+        <p>O alicerce. Redefinimos a sua identidade, curando a "crise de identidade" da sua marca para que você deixe de competir por cupons de desconto.</p>
+      </div>
+      <div class="method-card">
+        <div class="method-num">02</div>
+        <h3>Boutique de Criação</h3>
+        <p>Design, audiovisual e narrativa. Produzimos a estética que interrompe o feed do Instagram e gera o desejo visceral de comer o seu produto.</p>
+      </div>
+      <div class="method-card">
+        <div class="method-num">03</div>
+        <h3>Fundo de Funil</h3>
+        <p>Tráfego pago agressivo direto na dor. Dominamos as pesquisas de alta intenção e escalamos suas vendas com inteligência de dados.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap reveal" id="faq">
+    <div class="faq-wrap">
+      <div class="faq-title">
+        <h2>Verdade nua e crua.</h2>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item" data-faq>
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>Vocês fazem gestão de "posts" no Instagram?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            Não. O modelo de "cronograma de posts" morreu. Nós construímos o capital visual da sua marca e rodamos campanhas de aquisição focadas em receita. Se quer só tapar buraco no feed, não somos a agência certa.
+          </div>
+        </div>
+
+        <div class="faq-item" data-faq>
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>Para quem é a Outcast?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            Bares e restaurantes, especialmente no Sul do Brasil. Se o seu produto é impecável, mas você sente "inveja" do concorrente que tem o salão lotado, nós sabemos exatamente como reverter isso.
+          </div>
+        </div>
+
+        <div class="faq-item" data-faq>
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>O que acontece no Diagnóstico de 15min?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            É uma conversa de operador para operador. Vamos olhar o seu DRE, entender sua dor e dizer na cara se a nossa metodologia consegue resolver o seu problema ou não. Sem enrolação corporativa.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-area reveal" id="agendar">
+    <div class="wrap">
+      <div class="section-header center">
+        <div class="tag-pill dark" style="background: rgba(255,255,255,0.2); color:#fff; border:none;">Diagnóstico Gratuito</div>
+        <h2 style="color: #fff;">Vamos blindar o seu DRE?</h2>
+        <p>Agende um papo reto com nossos Estrategistas de Negócios (Closers). Descubra se a sua marca tem potencial para se tornar o próximo destino da cidade.</p>
+      </div>
+
+      <div class="calendar-container">
+        <div class="calendly-inline-widget" data-url="https://calendly.com/barbara-outcast/30min?text_color=464545&primary_color=ac6d03" style="min-width:320px;height:100%;width:100%;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap reveal">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">
+            <img src="logo.png" alt="Outcast Creative" loading="lazy" decoding="async">
+          </div>
+          <p class="footer-copy">Boutique de estratégia e branding. Construímos as marcas que se tornam a escolha óbvia através de estética premium e performance focada no DRE.</p>
+        </div>
+
+        <div class="footer-nav">
+          <div class="footer-col">
+            <h5>Estratégia</h5>
+            <a href="#metodo">Metodologia</a>
+            <a href="#portfolio">Skin in the Game</a>
+            <a href="#agendar">Agendar Call</a>
+          </div>
+          <div class="footer-col">
+            <h5>Conecte-se</h5>
+            <a href="https://www.linkedin.com/in/murilo-weber-outcast/" target="_blank" rel="noopener">LinkedIn Muri</a>
+            <a href="https://www.linkedin.com/in/ana-luiza-thomazini/" target="_blank" rel="noopener">LinkedIn Nalu</a>
+            <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>©️ 2026 Outcast Creative. Todos os Direitos Reservados.</span>
+        <span>Curitiba, PR • No BS. Just Results.</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="joinchat">
+    <div class="chat-bubble">
+      <div class="chat-header">
+        <div class="chat-avatar">O</div>
+        <div class="chat-info">
+          <h4>Estrategista Outcast</h4>
+          <span>Online Agora</span>
+        </div>
+      </div>
+      <div class="chat-text">
+        E aí, o salão fechou no azul ontem? Se precisar transformar sua marca na escolha óbvia da cidade, me chama aqui. 👇
+      </div>
+      <a href="https://wa.me/5541999999999" target="_blank" rel="noopener" class="chat-link">Falar pelo WhatsApp</a>
+    </div>
+
+    <a href="https://wa.me/5541999999999" target="_blank" rel="noopener" class="chat-trigger" aria-label="Falar no WhatsApp">
+      <div class="chat-badge" aria-hidden="true">1</div>
+      <svg viewBox="0 0 448 512" aria-hidden="true"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.1 0-65.6-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-5.5-2.8-23.2-8.5-44.2-27.1-16.4-14.6-27.4-32.7-30.6-38.2-3.2-5.6-.3-8.6 2.4-11.3 2.5-2.5 5.5-6.5 8.3-9.7 2.8-3.3 3.7-5.6 5.5-9.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 13.2 5.8 23.5 9.2 31.5 11.8 13.3 4.2 25.4 3.6 35 2.2 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+    </a>
+  </div>
+
+  <script>
+    document.querySelectorAll('.marquee-track').forEach(track => {
+      const content = track.innerHTML;
+      track.innerHTML = content + content;
+    });
+
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 40) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    }, { passive: true });
+
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const revealElements = document.querySelectorAll('.reveal');
+
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+
+      revealElements.forEach(el => observer.observe(el));
+    } else {
+      revealElements.forEach(el => el.classList.add('active'));
+    }
+
+    setTimeout(() => {
+      const hero = document.querySelector('.hero');
+      if (hero) hero.classList.add('active');
+    }, 100);
+
+    const drawer = document.getElementById('mobileDrawer');
+    const toggle = document.getElementById('navToggle');
+    const closeBtn = document.getElementById('navClose');
+
+    function openDrawer() {
+      drawer.classList.add('active');
+      drawer.setAttribute('aria-hidden', 'false');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+      drawer.classList.remove('active');
+      drawer.setAttribute('aria-hidden', 'true');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    toggle.addEventListener('click', () => {
+      if (drawer.classList.contains('active')) closeDrawer();
+      else openDrawer();
+    });
+
+    closeBtn.addEventListener('click', closeDrawer);
+
+    drawer.addEventListener('click', (e) => {
+      if (e.target === drawer) closeDrawer();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.classList.contains('active')) closeDrawer();
+    });
+
+    drawer.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', closeDrawer);
+    });
+
+    document.querySelectorAll('[data-faq]').forEach(item => {
+      const btn = item.querySelector('button');
+
+      btn.addEventListener('click', () => {
+        const active = item.classList.toggle('active');
+        btn.setAttribute('aria-expanded', active ? 'true' : 'false');
+      });
+    });
+  </script>
+
+</body>
+</html>
